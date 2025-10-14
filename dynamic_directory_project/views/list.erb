@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <ul class="pure-menu-list">
+    <% @list.each do |territory| %>
+      <li class="pure menu item">
+        <a href="<%= territory %>" class="pure-menu-link"><%= territory %></a>
+      </li>
+    <% end %>
+  </ul>
+
+  <p>
+    <% if params[:sort] == "desc" %>
+      <a href="/">Sort ascending</a>
+    <% else %>
+      <a href="/?sort=desc">Sort descending</a>
+    <% end %>
+  </p>
+</html>

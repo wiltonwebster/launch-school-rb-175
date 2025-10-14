@@ -1,0 +1,16 @@
+<h3>User: <%= @name.capitalize %></h3>
+
+<p>Email: <%= @email %></p>
+<p>Interests: <%= @interest_list %></p>
+
+<br>
+<br>
+
+<p>Other Users:</p>
+<ul>
+  <% @other_users.each do |name, _| %>
+    <li>
+      <a href="<%= name %>"><%= name.capitalize %></a>
+    </li>
+  <% end %>
+</ul>
