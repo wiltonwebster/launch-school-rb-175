@@ -5,6 +5,7 @@ require "tilt"
 require "erubis"
 require "redcarpet"
 require "yaml"
+require "bcrypt"
 
 configure do
   enable :sessions
@@ -26,6 +27,17 @@ def load_user_credentials
     File.expand_path("../users.yml", __FILE__)
   end
   YAML.load_file(credentials_path)
+end
+
+def valid_credentials?(username, password)
+  credentials = load_user_credentials
+  
+  if credentials.key?(username)
+    bcrypt_password = BCrypt::Password.new(credentials[username])
+    bcrypt_password == password
+  else
+    false
+  end
 end
 
 def render_markdown(text)
@@ -69,10 +81,9 @@ get "/users/signin" do
 end
 
 post "/users/signin" do
-  credentials = load_user_credentials
   username = params[:username]
   
-  if credentials.key?(username) && credentials[username] == params[:password]
+  if valid_credentials?(username, params[:password])
     session[:username] = username
     session[:message] = "Welcome!"
     redirect "/"

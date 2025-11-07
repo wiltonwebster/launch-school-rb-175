@@ -1,5 +1,5 @@
 {
-  will: 1234,
-  pepper: meow,
-  developer: devpass
+  will: $2a$12$KRJx7OEA8gUEZeTN7jD2R.V0vLz4pFiTgaa9eR7HGcE.45/5S90Uu,
+  pepper: $2a$12$Roa/R8lw4M2KmYEePmkRQOTS3lUbp64tIwERewLM6gMEI48WSkOzC,
+  developer: $2a$12$K.auB6hZLPmw63SUNfm1rOe3Kwv1mcJM9V8EHgjzfGHf2SscXwbsy
 }
